@@ -1,9 +1,17 @@
 // Write your helper functions here!
-require('isomorphic-fetch');
+require("isomorphic-fetch");
 
-function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
-   // Here is the HTML formatting for our mission target div.
-   /*
+function addDestinationInfo(
+  document,
+  name,
+  diameter,
+  star,
+  distance,
+  moons,
+  imageUrl
+) {
+  // Here is the HTML formatting for our mission target div.
+  /*
                 <h2>Mission Destination</h2>
                 <ol>
                     <li>Name: </li>
@@ -16,34 +24,59 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
    */
 }
 
-function validateInput(testInput) {
-   
-
-    console.log("String One")
-   
+function validateInput(inputValue) {
+  if (inputValue === "") {
+    return "Empty";
+  } else if (isNaN(inputValue)) {
+    return "Not a Number";
+  } else if (!isNaN(inputValue)) {
+    return "Is a Number";
+  }
 }
 
-function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
+function formSubmission(
+  document,
+  list,
+  pilotName,
+  copilotName,
+  fuelLevel,
+  cargoMass
+) {
+  let pilotNameValidationResponse = validateInput(pilotName);
+  let copilotNameValidationResponse = validateInput(copilotName);
+  let fuelLevelValidationResponse = validateInput(fuelLevel);
+  let cargoMassValidationResponse = validateInput(cargoMass);
 
-    console.log("String Two")
-
-
+  if (
+    pilotNameValidationResponse === "Empty" ||
+    copilotNameValidationResponse === "Empty" ||
+    fuelLevelValidationResponse === "Empty" ||
+    cargoMassValidationResponse === "Empty"
+  ) {
+    alert("All fields are required");
+  } else if (pilotNameValidationResponse === "Is a Number") {
+    alert("Pilot Name cannot be a Number!");
+  } else if (copilotNameValidationResponse === "Is a Number") {
+    alert("Copilot Name cannot be a Number!");
+  } else if (fuelLevelValidationResponse === "Not a Number") {
+    alert("Fuel Level must be a Number!");
+  } else if (cargoMassValidationResponse === "Not a Number") {
+    alert("Cargo Mass must be a Number!");
+  }
 }
 
 async function myFetch() {
-    let planetsReturned;
+  let planetsReturned;
 
-    planetsReturned = await fetch().then( function(response) {
-        });
+  planetsReturned = await fetch().then(function (response) {});
 
-    return planetsReturned;
+  return planetsReturned;
 }
 
-function pickPlanet(planets) {
-}
+function pickPlanet(planets) {}
 
 module.exports.addDestinationInfo = addDestinationInfo;
 module.exports.validateInput = validateInput;
 module.exports.formSubmission = formSubmission;
-module.exports.pickPlanet = pickPlanet; 
+module.exports.pickPlanet = pickPlanet;
 module.exports.myFetch = myFetch;
