@@ -75,18 +75,28 @@ function formSubmission(
 
   //LaunchStatus should change to red and not ready to launch
   let launchStatusUpdate = document.getElementById("launchStatus");
+  let fuelStatusUpdate = document.getElementById("fuelStatus");
+  let cargoStatusUpdate = document.getElementById("cargoStatus");
+
   //I want to update the fuel level to appear with a message when the user inputs a number lower than 10,000
   if (fuelLevel < 10000) {
-    document.getElementById("fuelStatus").innerHTML =
+    fuelStatusUpdate.innerHTML =
       "Fuel level too low for launch";
     launchStatusUpdate.innerHTML = "Shuttle not ready for launch";
     launchStatusUpdate.style.color = "red";
+  } else if(10000 < cargoMass) {
+    cargoStatusUpdate.innerHTML = "Cargo mass too heavy for launch";
+    launchStatusUpdate.innerHTML = "Shuttle not ready for launch";
+    launchStatusUpdate.style.color = "red";
   } else {
-    document.getElementById("fuelStatus").innerHTML =
+    fuelStatusUpdate.innerHTML =
       "Fuel level high enough for launch";
+      cargoStatusUpdate.innerHTML = "Cargo mass low enough for launch";
     launchStatusUpdate.innerHTML = "Shuttle is Ready for Launch";
     launchStatusUpdate.style.color = "green";
   }
+
+  
 }
 
 async function myFetch() {
