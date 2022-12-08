@@ -18,10 +18,16 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 
 function validateInput(testInput) {
    
+
+    console.log("String One")
+   
 }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-   
+
+    console.log("String Two")
+
+
 }
 
 async function myFetch() {
