@@ -9,10 +9,9 @@ window.addEventListener("load", function () {
     let copilotName = document.querySelector("input[name=copilotName]").value;
     let fuelLevel = document.querySelector("input[name=fuelLevel]").value;
     let cargoMass = document.querySelector("input[name=cargoMass]").value;
-    let list = [];
+    let list = document.getElementById("faultyItems");
 
-
-    formSubmission(
+        formSubmission(
       document,
       list,
       pilotName,
@@ -27,7 +26,7 @@ window.addEventListener("load", function () {
     //   copilotName,
     //   fuelLevel,
     //   cargoMass
-    // ); 
+    // );
   });
 
   let listedPlanets;

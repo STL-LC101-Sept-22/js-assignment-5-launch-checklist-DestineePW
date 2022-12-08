@@ -63,7 +63,29 @@ function formSubmission(
   } else if (cargoMassValidationResponse === "Not a Number") {
     alert("Cargo Mass must be a Number!");
   } else {
-    document.getElementById("faultyItems").style.visibility = "visible";
+    list.style.visibility = "visible";
+    //dynamically update the text of the element with ID pilot Status
+    document.getElementById(
+      "pilotStatus"
+    ).innerHTML = `Pilot ${pilotName} is ready for launch.`;
+    document.getElementById(
+      "copilotStatus"
+    ).innerHTML = `Co-Pilot ${copilotName} is ready for launch.`;
+  }
+
+  //LaunchStatus should change to red and not ready to launch
+  let launchStatusUpdate = document.getElementById("launchStatus");
+  //I want to update the fuel level to appear with a message when the user inputs a number lower than 10,000
+  if (fuelLevel < 10000) {
+    document.getElementById("fuelStatus").innerHTML =
+      "Fuel level too low for launch";
+    launchStatusUpdate.innerHTML = "Shuttle not ready for launch";
+    launchStatusUpdate.style.color = "red";
+  } else {
+    document.getElementById("fuelStatus").innerHTML =
+      "Fuel level high enough for launch";
+    launchStatusUpdate.innerHTML = "Shuttle is Ready for Launch";
+    launchStatusUpdate.style.color = "green";
   }
 }
 
