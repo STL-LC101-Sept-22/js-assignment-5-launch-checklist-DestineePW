@@ -62,6 +62,8 @@ function formSubmission(
     alert("Fuel Level must be a Number!");
   } else if (cargoMassValidationResponse === "Not a Number") {
     alert("Cargo Mass must be a Number!");
+  } else {
+    document.getElementById("faultyItems").style.visibility = "visible";
   }
 }
 
