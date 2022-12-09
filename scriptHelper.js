@@ -60,6 +60,8 @@ function formSubmission(
   let fuelLevelValidationResponse = validateInput(fuelLevel);
   let cargoMassValidationResponse = validateInput(cargoMass);
 
+  list.style.visibility = "hidden";
+  
   if (
     pilotNameValidationResponse === "Empty" ||
     copilotNameValidationResponse === "Empty" ||
@@ -77,13 +79,14 @@ function formSubmission(
     alert("Cargo Mass must be a Number!");
   } else {
     list.style.visibility = "visible";
+  
     //dynamically update the text of the element with ID pilot Status
     document.getElementById(
       "pilotStatus"
     ).innerHTML = `Pilot ${pilotName} is ready for launch`;
     document.getElementById(
       "copilotStatus"
-    ).innerHTML = `Co-Pilot ${copilotName} is ready for launch`;
+    ).innerHTML = `Co-pilot ${copilotName} is ready for launch`;
   }
 
   //LaunchStatus should change to red and not ready to launch
@@ -97,6 +100,7 @@ function formSubmission(
     launchStatusUpdate.innerHTML = "Shuttle Not Ready for Launch";
     launchStatusUpdate.style.color = "rgb(199, 37, 78)";
   } else if (10000 < cargoMass) {
+    fuelStatusUpdate.innerHTML = "Fuel level high enough for launch";
     cargoStatusUpdate.innerHTML = "Cargo mass too heavy for launch";
     launchStatusUpdate.innerHTML = "Shuttle Not Ready for Launch";
     launchStatusUpdate.style.color = "rgb(199, 37, 78)";
@@ -104,7 +108,7 @@ function formSubmission(
     fuelStatusUpdate.innerHTML = "Fuel level high enough for launch";
     cargoStatusUpdate.innerHTML = "Cargo mass low enough for launch";
     launchStatusUpdate.innerHTML = "Shuttle is Ready for Launch";
-    launchStatusUpdate.style.color = "green";
+    launchStatusUpdate.style.color = "'rgb(65, 159, 106)";
   }
 }
 
