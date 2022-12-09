@@ -10,12 +10,8 @@ function addDestinationInfo(
   moons,
   imageUrl
 ) {
-  console.log(document, name, diameter, star, distance, moons, imageUrl);
-
   //This function should make the destination information of the chosen planet appear in mission target div.
-  document.getElementById(
-    "missionTarget"
-  ).innerHTML = `
+  document.getElementById("missionTarget").innerHTML = `
     <h2>Mission Destination</h2>
     <ol>
       <li>Name: ${name}</li>
@@ -84,10 +80,10 @@ function formSubmission(
     //dynamically update the text of the element with ID pilot Status
     document.getElementById(
       "pilotStatus"
-    ).innerHTML = `Pilot ${pilotName} is ready for launch.`;
+    ).innerHTML = `Pilot ${pilotName} is ready for launch`;
     document.getElementById(
       "copilotStatus"
-    ).innerHTML = `Co-Pilot ${copilotName} is ready for launch.`;
+    ).innerHTML = `Co-Pilot ${copilotName} is ready for launch`;
   }
 
   //LaunchStatus should change to red and not ready to launch
@@ -98,12 +94,12 @@ function formSubmission(
   //I want to update the fuel level to appear with a message when the user inputs a number lower than 10,000
   if (fuelLevel < 10000) {
     fuelStatusUpdate.innerHTML = "Fuel level too low for launch";
-    launchStatusUpdate.innerHTML = "Shuttle not ready for launch";
-    launchStatusUpdate.style.color = "red";
+    launchStatusUpdate.innerHTML = "Shuttle Not Ready for Launch";
+    launchStatusUpdate.style.color = "rgb(199, 37, 78)";
   } else if (10000 < cargoMass) {
     cargoStatusUpdate.innerHTML = "Cargo mass too heavy for launch";
-    launchStatusUpdate.innerHTML = "Shuttle not ready for launch";
-    launchStatusUpdate.style.color = "red";
+    launchStatusUpdate.innerHTML = "Shuttle Not Ready for Launch";
+    launchStatusUpdate.style.color = "rgb(199, 37, 78)";
   } else {
     fuelStatusUpdate.innerHTML = "Fuel level high enough for launch";
     cargoStatusUpdate.innerHTML = "Cargo mass low enough for launch";

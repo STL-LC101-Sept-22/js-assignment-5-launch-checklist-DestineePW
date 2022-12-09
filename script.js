@@ -43,6 +43,5 @@ window.addEventListener("load", function () {
         chosenPlanet.moons,
         chosenPlanet.image
       );
-      console.log(chosenPlanet);
     });
 });
