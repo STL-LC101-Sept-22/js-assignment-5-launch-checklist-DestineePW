@@ -10,6 +10,23 @@ function addDestinationInfo(
   moons,
   imageUrl
 ) {
+  console.log(document, name, diameter, star, distance, moons, imageUrl);
+
+  //This function should make the destination information of the chosen planet appear in mission target div.
+  document.getElementById(
+    "missionTarget"
+  ).innerHTML = `
+    <h2>Mission Destination</h2>
+    <ol>
+      <li>Name: ${name}</li>
+      <li>Diameter: ${diameter} </li>
+      <li>Star: ${star}</li>
+      <li>Distance from Earth: ${distance} </li>
+      <li>Number of Moons: ${moons} </li>
+    </ol>
+    <img src="${imageUrl}"/>`;
+  // I want to change mission target. innerHTML to reflect the data from chosen planet
+
   // Here is the HTML formatting for our mission target div.
   /*
                 <h2>Mission Destination</h2>
@@ -80,34 +97,38 @@ function formSubmission(
 
   //I want to update the fuel level to appear with a message when the user inputs a number lower than 10,000
   if (fuelLevel < 10000) {
-    fuelStatusUpdate.innerHTML =
-      "Fuel level too low for launch";
+    fuelStatusUpdate.innerHTML = "Fuel level too low for launch";
     launchStatusUpdate.innerHTML = "Shuttle not ready for launch";
     launchStatusUpdate.style.color = "red";
-  } else if(10000 < cargoMass) {
+  } else if (10000 < cargoMass) {
     cargoStatusUpdate.innerHTML = "Cargo mass too heavy for launch";
     launchStatusUpdate.innerHTML = "Shuttle not ready for launch";
     launchStatusUpdate.style.color = "red";
   } else {
-    fuelStatusUpdate.innerHTML =
-      "Fuel level high enough for launch";
-      cargoStatusUpdate.innerHTML = "Cargo mass low enough for launch";
+    fuelStatusUpdate.innerHTML = "Fuel level high enough for launch";
+    cargoStatusUpdate.innerHTML = "Cargo mass low enough for launch";
     launchStatusUpdate.innerHTML = "Shuttle is Ready for Launch";
     launchStatusUpdate.style.color = "green";
   }
-
-  
 }
 
 async function myFetch() {
   let planetsReturned;
 
-  planetsReturned = await fetch().then(function (response) {});
+  planetsReturned = await fetch(
+    "https://handlers.education.launchcode.org/static/planets.json"
+  ).then(function (response) {
+    return response.json();
+  });
 
+  // console.log(planetsReturned)
   return planetsReturned;
 }
 
-function pickPlanet(planets) {}
+function pickPlanet(planets) {
+  let item = planets[Math.floor(Math.random() * planets.length)];
+  return item;
+}
 
 module.exports.addDestinationInfo = addDestinationInfo;
 module.exports.validateInput = validateInput;
